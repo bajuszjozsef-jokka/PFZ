@@ -104,18 +104,6 @@
   }
   .btn-start:hover{ background:var(--gold-light); transform:translateY(-2px); box-shadow:0 10px 30px rgba(201,164,73,0.25);}
 
-  .scroll-hint{
-    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
-    font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
-    color:rgba(244,237,225,0.35);
-    display:flex; flex-direction:column; align-items:center; gap:10px;
-    opacity:0; animation:fadeUp 1s ease forwards 0.7s;
-  }
-  .scroll-hint::after{
-    content:''; width:1px; height:30px; background:rgba(244,237,225,0.25);
-    animation:pulseLine 2s ease-in-out infinite;
-  }
-
   @keyframes fadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
   @keyframes pulseLine{ 0%,100%{opacity:0.3;} 50%{opacity:0.9;} }
 
@@ -268,7 +256,6 @@
   <div class="prize-pill"><span class="dot"></span> Páros belépőt sorsolunk ki a nyertes számára</div>
   <br>
   <button class="btn-start" onclick="startQuiz()">Kezdjük el</button>
-  <div class="scroll-hint">Görgess</div>
 </div>
 
 <div class="wrap quiz-section" id="quizSection">
@@ -437,7 +424,7 @@ function renderResult(){
         <input type="text" placeholder="Teljes név" required>
         <input type="email" placeholder="E-mail cím" required>
         <input type="tel" placeholder="Telefonszám">
-        <button class="btn-submit" type="submit">Pályázat beküldése</button>
+        <button class="btn-submit" type="submit">Iratkozz fel és nyerj páros belépőt</button>
       </form>
     </div>
 
