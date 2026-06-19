@@ -192,8 +192,17 @@
   .result-desc{ font-size:15px; line-height:1.7; color:rgba(244,237,225,0.75); margin-bottom:36px;}
 
   .concert-card{
+    display:block;
     border:1px solid var(--line); border-radius:6px; padding:28px;
     margin-bottom:32px; background:rgba(201,164,73,0.04);
+    text-decoration:none; color:inherit;
+    transition:all 0.25s ease;
+    cursor:pointer;
+  }
+  .concert-card:hover{
+    border-color:var(--gold);
+    background:rgba(201,164,73,0.08);
+    transform:translateY(-2px);
   }
   .concert-card .label{ font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:600;}
   .concert-card h3{ font-family:'Fraunces', serif; font-size:1.5rem; font-weight:500; margin-bottom:10px;}
@@ -256,7 +265,7 @@
   <div class="hero-line"></div>
   <h1>Találd meg<br><em>a hangodat</em></h1>
   <p>Négy kérdés. Egy zenei karakter. Egy konkrét koncert, ami pontosan neked szól — még ha még sosem ültél szimfonikus zenekar előtt.</p>
-  <div class="prize-pill"><span class="dot"></span> 1 pár jegy sorsoljuk ki a nyertes koncertjére</div>
+  <div class="prize-pill"><span class="dot"></span> Páros belépőt sorsolunk ki a nyertes számára</div>
   <br>
   <button class="btn-start" onclick="startQuiz()">Kezdjük el</button>
   <div class="scroll-hint">Görgess</div>
@@ -320,22 +329,22 @@ const RESULTS = {
   energikus: {
     type:"A Lendületes",
     desc:"Téged a nagy hangzás, a pörgő ritmus és a magával ragadó dinamika fog meg. Nem szereted, ha lassan indul be egy este — te azonnal a közepébe akarsz vágni.",
-    concert:{ name:"Made for USA", date:"2026. szeptember 10. · csütörtök 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Bogányi Tibor" }
+    concert:{ name:"Made for USA", date:"2026. szeptember 10. · csütörtök 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Bogányi Tibor", url:"https://www.pfz.hu/koncert/2031/made-for-usa" }
   },
   megható: {
     type:"A Lélekemelő",
     desc:"Neked a zene legnagyobb ereje a megérintés. Nem a hangerő számít, hanem az a pillanat, amikor elcsendesedik a terem és csak a zene marad.",
-    concert:{ name:"Karácsonyi Ünnepi Hangverseny — A zene misztériuma", date:"2026. december 16. · szerda 19:30", venue:"Pécsi Bazilika", conductor:"Madaras Gergely" }
+    concert:{ name:"Karácsonyi Ünnepi Hangverseny — A zene misztériuma", date:"2026. december 16. · szerda 19:30", venue:"Pécsi Bazilika", conductor:"Madaras Gergely", url:"https://www.pfz.hu/koncert/2050/karacsonyi-unnepi-hangverseny" }
   },
   nemzetközi: {
     type:"A Felfedező",
     desc:"Téged az izgat, ami új. Szívesen próbálsz ki olyat, amiről még nem hallottál — és pont ez teszi izgalmassá az estét.",
-    concert:{ name:"Hegedűtánc", date:"2026. november 6. · péntek 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Andreas Ottensamer" }
+    concert:{ name:"Hegedűtánc", date:"2026. november 6. · péntek 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Andreas Ottensamer", url:"https://www.pfz.hu/koncert/2044/hegedutanc" }
   },
   drámai: {
     type:"A Nagyívű",
     desc:"A visszafogottság nem a te műfajod. Téged az érdekel, ami minden eddiginél nagyobb — egy hangzás, ami betölti a termet és veled marad napokig.",
-    concert:{ name:"Isteni hangjáték", date:"2026. december 10. · csütörtök 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Kesselyák Gergely" }
+    concert:{ name:"Isteni hangjáték", date:"2026. december 10. · csütörtök 19:00", venue:"Kodály Központ, hangversenyterem", conductor:"Kesselyák Gergely", url:"https://www.pfz.hu/koncert/2033/isteni-hangjatek" }
   }
 };
 
@@ -412,15 +421,15 @@ function renderResult(){
     <div class="result-type">${r.type}</div>
     <div class="result-desc">${r.desc}</div>
 
-    <div class="concert-card">
-      <div class="label">Neked ezt ajánljuk</div>
+    <a class="concert-card" href="${r.concert.url}" target="_blank" rel="noopener">
+      <div class="label">Neked ezt ajánljuk &nbsp;→</div>
       <h3>${r.concert.name}</h3>
       <div class="concert-meta">
         <span>${r.concert.date}</span><br>
         ${r.concert.venue}<br>
         Vezényel: ${r.concert.conductor}
       </div>
-    </div>
+    </a>
 
     <div id="formArea">
       <div class="quiz-step-label">Pályázz páros jegyért</div>
